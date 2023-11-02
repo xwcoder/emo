@@ -52,6 +52,7 @@ module.exports = {
         },
         prerelease: true,
         draft: true,
+        tagPrefix: '',
       },
     },
   ],
