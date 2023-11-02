@@ -1,6 +1,6 @@
 # emo
 
-I wish to develop **emo** as an **all in one** application. Now, it includes the follow apps:
+I wish to develop **emo** as an **all in one** application. Now, it includes the following apps:
   - **Reader** - A rss reader.
 
 ## Features
