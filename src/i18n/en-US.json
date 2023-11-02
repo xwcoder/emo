@@ -1,0 +1,51 @@
+{
+  "reader": {
+    "list": {
+      "unread": "Unread",
+      "starred": "Starred",
+      "all": "All"
+    },
+
+    "action": {
+      "delete": "Delete",
+      "markRead": "Mark as read",
+      "markUnread": "Mark as unread",
+      "refresh": "Refresh",
+      "openExternal": "Open in browser"
+    },
+
+    "form": {
+      "title": "Subscribe a Channel",
+      "url": {
+        "label": "URL (supports rss and atom)"
+      },
+      "name": {
+        "label": "Channel name"
+      },
+      "buttons": {
+        "subscribe": "Subscribe",
+        "close": "Close"
+      }
+    }
+  },
+
+  "settings": {
+    "appearance": {
+      "title": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Auto"
+    },
+
+    "locale": {
+      "title": "Language"
+    },
+
+    "dataPath": {
+      "title": "Choose directory to store data",
+      "browserBtn": "Browser",
+      "setToDefaultBtn": "Set To Default Directory",
+      "applyBtn": "Restart & Apply"
+    }
+  }
+}

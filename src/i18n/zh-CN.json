@@ -1,0 +1,51 @@
+{
+  "reader": {
+    "list": {
+      "unread": "未读",
+      "starred": "星标",
+      "all": "全部"
+    },
+
+    "action": {
+      "delete": "删除",
+      "markRead": "标记为已读",
+      "markUnread": "标记为未读",
+      "refresh": "刷新",
+      "openExternal": "在浏览器中打开"
+    },
+
+    "form": {
+      "title": "订阅频道",
+      "url": {
+        "label": "频道地址 (支持rss和atom)"
+      },
+      "name": {
+        "label": "频道名称"
+      },
+      "buttons": {
+        "subscribe": "订阅",
+        "close": "关闭"
+      }
+    }
+  },
+
+  "settings": {
+    "appearance": {
+      "title": "外观",
+      "light": "浅色",
+      "dark": "深色",
+      "auto": "自动"
+    },
+
+    "locale": {
+      "title": "语言"
+    },
+
+    "dataPath": {
+      "title": "选择数据存储位置",
+      "browserBtn": "选择",
+      "setToDefaultBtn": "设置为默认目录",
+      "applyBtn": "重启生效"
+    }
+  }
+}
