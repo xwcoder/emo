@@ -34,6 +34,21 @@ const useStyles = makeStyles({
       fontSize: tokens.fontSizeBase400,
       lineHeight: 1.2,
     },
+
+    '& a': {
+      color: tokens.colorBrandForegroundLink,
+      textDecorationLine: 'underline',
+
+      ':hover': {
+        color: tokens.colorBrandForegroundLinkHover,
+      },
+      ':active': {
+        color: tokens.colorBrandForegroundLinkSelected,
+      },
+      ':visited': {
+        color: tokens.colorBrandForegroundLinkPressed,
+      },
+    },
   },
 })
 
