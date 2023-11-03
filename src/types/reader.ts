@@ -22,4 +22,5 @@ export type Feed = {
   link?: string
   unreadCount?: number
   items?: Article[]
+  createTime?: string
 }

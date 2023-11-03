@@ -45,8 +45,20 @@ export class ReaderStore {
   }
 
   private initListeners() {
-    remote.on('/reader/feed', (_, feeds = []) => {
-      runInAction(() => { this.feeds = feeds })
+    remote.on('/reader/feed', (_, feeds: Feed | Feed[] = []) => {
+      runInAction(() => {
+        if (Array.isArray(feeds)) {
+          this.feeds = feeds
+          return
+        }
+
+        const index = this.feeds.findIndex((v) => v.id === feeds.id)
+        if (index === -1) {
+          this.feeds.unshift(feeds)
+        } else {
+          this.feeds.splice(index, 1, feeds)
+        }
+      })
     })
   }
 
