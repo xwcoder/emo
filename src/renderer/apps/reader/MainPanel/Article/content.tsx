@@ -1,9 +1,10 @@
 /* eslint-disable react/no-danger */
-
+import { useEffect, useRef } from 'react'
 import { makeStyles, tokens } from '@fluentui/react-components'
 import { observer } from 'mobx-react-lite'
 import { store } from '@/renderer/store'
 import { format as formatTime } from '@/utils/common/date'
+import { openExternal } from '@/utils/browser/shell'
 
 const { readerStore } = store
 
@@ -34,6 +35,21 @@ const useStyles = makeStyles({
       fontSize: tokens.fontSizeBase400,
       lineHeight: 1.2,
     },
+
+    '& a': {
+      color: tokens.colorBrandForegroundLink,
+      textDecorationLine: 'underline',
+
+      ':hover': {
+        color: tokens.colorBrandForegroundLinkHover,
+      },
+      ':active': {
+        color: tokens.colorBrandForegroundLinkSelected,
+      },
+      ':visited': {
+        color: tokens.colorBrandForegroundLinkPressed,
+      },
+    },
   },
 })
 
@@ -53,6 +69,27 @@ function Content() {
   } = activeArticle
   const feed = feeds.find((v) => v.id === feedId)!
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = containerRef.current
+    const handler = (e: MouseEvent) => {
+      const { target } = e
+      if (!(target instanceof HTMLAnchorElement) || !target.href) {
+        return
+      }
+
+      e.preventDefault()
+      openExternal(target.href)
+    }
+
+    el?.addEventListener('click', handler)
+
+    return () => {
+      el?.removeEventListener('click', handler)
+    }
+  }, [containerRef.current])
+
   return (
     <div>
       <h1 className="text-2xl px-5 pt-4 pb-3">
@@ -70,6 +107,7 @@ function Content() {
       </div>
       <div className="px-5">
         <div
+          ref={containerRef}
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
