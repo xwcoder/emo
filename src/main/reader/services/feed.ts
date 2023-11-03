@@ -31,27 +31,26 @@ export const getByUrl = async (url: string) => {
   return null
 }
 
-export const getAll = async (): Promise<Feed[]> => {
+export const getAll = (): Promise<Feed[]> => {
   const sql = `
-    select f.*, count(a.id) as count
+    select f.*, count(a.id) as unreadCount
     from feeds as f left outer join articles as a
     on f.id = a.feedId and a.read = 0
     group by f.id
     order by createTime desc;
   `
 
-  const rows = await all(sql)
-  const feeds: Feed[] = rows.map((row) => ({
-    id: row.id,
-    title: row.title,
-    url: row.url,
-    link: row.link,
-    createTime: row.createTime,
-    description: row.description,
-    unreadCount: row.count,
-  }))
+  return all(sql)
+}
 
-  return feeds
+export const getOne = (id: number): Promise<Feed | undefined> => {
+  const sql = `
+    select f.*, (select count(*) from articles as a where a.feedId = f.id and a.read = 0) as unreadCount
+    from feeds as f
+    where f.id = ?;
+  `
+
+  return get(sql, id)
 }
 
 export const deleteById = (id: number) => new Promise<void>((resolve) => {
@@ -73,4 +72,10 @@ export const pushAll = async () => {
   const feeds = await getAll()
 
   push('/reader/feed', feeds)
+}
+
+export const pushOne = async (id: number) => {
+  const feed = await getOne(id)
+
+  push('/reader/feed', feed)
 }

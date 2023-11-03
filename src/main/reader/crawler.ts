@@ -23,6 +23,7 @@ const crawlOne = async (f: Feed) => {
     }
 
     await articleService.upsert(items)
+    feedService.pushOne(id!)
   } catch (e) {
     logger.error(`[Reader] crawl error: ${url}`, e)
   }
@@ -59,7 +60,6 @@ export const startCrawler = () => {
     try {
       const feeds = await feedService.getAll()
       await conQueue(feeds, 10, crawlOne)
-      await feedService.pushAll()
     } catch (e) {
       logger.error('[Reader] Crawl error', e)
     } finally {

@@ -50,7 +50,7 @@ router.post('/feed', async (_, { url, title }: Pick<Feed, 'url'|'title'>) => {
   }))
   await articleService.upsert(items)
 
-  feedService.pushAll()
+  feedService.pushOne(ifeed.id!)
 })
 
 router.get('/feed/all', async () => feedService.getAll())
