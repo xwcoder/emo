@@ -13,6 +13,7 @@ I wish to develop **emo** as an **all in one** desktop application. Now, it incl
 ![Reader screenshot](./docs/images/screenshot.png)
 
 ### Keyboard shortcus
+- ?: Toggle keyboard shortcus help
 - g then i: Go to Unread items
 - g then s: Go to Starred items
 - g then a: Go to All items
