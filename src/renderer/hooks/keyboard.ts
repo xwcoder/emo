@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { store } from '@/renderer/store'
 import { Apps } from '@/types/common'
 
-type Handler = (event: KeyboardEvent, k: string[]) => any
+export type Handler = (event: KeyboardEvent, k: string[]) => any
 
 const equal = (a: string[], b: string[]) => {
   if (!a.length || !b.length || a.length !== b.length) {

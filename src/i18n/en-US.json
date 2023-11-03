@@ -26,6 +26,25 @@
         "subscribe": "Subscribe",
         "close": "Close"
       }
+    },
+
+    "keyboard": {
+      "title": "Keyboard shortcuts",
+      "keys": {
+        "sw": "Toggle shortcurts help",
+        "gi": "Go to Unread",
+        "gs": "Go to Starred",
+        "ga": "Go to All",
+        "selectAll": "Select All",
+        "deselect": "Deselect All",
+        "x": "Select/Deselect item",
+        "s": "Toggle star",
+        "j": "Next item",
+        "k": "Previous item",
+        "o": "Open item",
+        "u": "Close item",
+        "v": "Open item in browser"
+      }
     }
   },
 
