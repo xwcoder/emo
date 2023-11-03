@@ -2,7 +2,7 @@ import { parseStringPromise } from 'xml2js'
 import get from 'lodash.get'
 import { Feed } from '@/types/reader'
 
-const trim = (s: string) => s.replaceAll('\n', '').trim()
+const trim = (s = '') => s.replaceAll('\n', '').trim()
 
 const gettrim = (...args: Parameters<typeof get>) => trim(get(...args))
 
@@ -16,7 +16,7 @@ const parseRss = (xml: any): Omit<Feed, 'url'> => {
     items: (channel.item || []).map((v: any) => ({
       title: gettrim(v, 'title[0]'),
       url: gettrim(v, 'link[0]'),
-      content: gettrim(v, 'description[0]'),
+      content: gettrim(v, 'content:encoded[0]') || gettrim(v, 'description[0]'),
       pubTime: gettrim(v, 'pubDate[0]'),
     })),
   }
