@@ -25,6 +25,8 @@ export class ReaderStore {
 
   opened = false
 
+  showKeyboardPanel = false
+
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, {
       rootStore: false,
@@ -318,5 +320,17 @@ export class ReaderStore {
   fold() {
     this.opened = false
     setTimeout(() => this.scrollIntoView())
+  }
+
+  openKeyboardPanel() {
+    this.showKeyboardPanel = true
+  }
+
+  closeKeyboardPanel() {
+    this.showKeyboardPanel = false
+  }
+
+  toggleKeyboardPanel() {
+    this.showKeyboardPanel = !this.showKeyboardPanel
   }
 }

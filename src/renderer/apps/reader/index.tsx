@@ -2,6 +2,7 @@ import { makeStyles, tokens, shorthands } from '@fluentui/react-components'
 
 import SidePanel from './SidePanel'
 import MainPanel from './MainPanel'
+import KeyboardShortcutsPanel from './keyboard-shortcuts-panel'
 
 import useKeyboard from './use-keyboard'
 
@@ -24,15 +25,18 @@ export default function Reader() {
   useKeyboard()
 
   return (
-    <div className="relative grid grid-cols-[256px_1fr] h-[100%]">
-      <div className={styles.side}>
-        <div className="py-5 pr-4">
-          <SidePanel />
+    <>
+      <div className="relative grid grid-cols-[256px_1fr] h-[100%]">
+        <div className={styles.side}>
+          <div className="py-5 pr-4">
+            <SidePanel />
+          </div>
+        </div>
+        <div className={styles.main}>
+          <MainPanel />
         </div>
       </div>
-      <div className={styles.main}>
-        <MainPanel />
-      </div>
-    </div>
+      <KeyboardShortcutsPanel />
+    </>
   )
 }
