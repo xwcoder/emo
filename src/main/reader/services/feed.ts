@@ -33,10 +33,9 @@ export const getByUrl = async (url: string) => {
 
 export const getAll = async (): Promise<Feed[]> => {
   const sql = `
-    select f.*, count(*) as count
+    select f.*, count(a.id) as count
     from feeds as f left outer join articles as a
-    on f.id = a.feedId
-    where a.read = 0
+    on f.id = a.feedId and a.read = 0
     group by f.id
     order by createTime desc;
   `
