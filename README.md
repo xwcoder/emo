@@ -1,4 +1,5 @@
 # emo
+[Download](https://github.com/xwcoder/emo/releases) | [Issue](https://github.com/xwcoder/emo/issues/new)
 
 I wish to develop **emo** as an **all in one** desktop application. Now, it includes the following apps:
   - **Reader** - A rss reader.
