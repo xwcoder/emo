@@ -11,7 +11,11 @@
       "markRead": "Mark as read",
       "markUnread": "Mark as unread",
       "refresh": "Refresh",
-      "openExternal": "Open in browser"
+      "openExternal": "Open in browser",
+      "copy": {
+        "title": "Copy url",
+        "success": "Copied"
+      }
     },
 
     "form": {

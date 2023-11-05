@@ -3,7 +3,7 @@
 import { observer } from 'mobx-react-lite'
 import { makeStyles, tokens } from '@fluentui/react-components'
 import { store } from '@/renderer/store'
-import { DeleteButton } from '@/renderer/apps/reader/components/toolbar'
+import { DeleteButton, CopyButton } from '@/renderer/apps/reader/components/toolbar'
 import { Feed } from '@/types/reader'
 
 const { readerStore } = store
@@ -29,7 +29,12 @@ const useStyles = makeStyles({
 })
 
 function Item({ data }: Props) {
-  const { id, title, unreadCount = 0 } = data
+  const {
+    id,
+    title,
+    unreadCount = 0,
+    url,
+  } = data
   const active = readerStore.tab === id
   const styles = useStyles()
 
@@ -63,11 +68,18 @@ function Item({ data }: Props) {
       </div>
       <div className="absolute top-0 right-0 hidden group-hover:block">
         <div className={styles.toolbar}>
-          <DeleteButton
-            className="h-7"
-            fontSize={16}
-            onClick={deleteFeed}
-          />
+          <div className="flex">
+            <CopyButton
+              className="h-7 w-8"
+              fontSize={16}
+              content={url}
+            />
+            <DeleteButton
+              className="h-7 w-8"
+              fontSize={16}
+              onClick={deleteFeed}
+            />
+          </div>
         </div>
       </div>
     </div>
