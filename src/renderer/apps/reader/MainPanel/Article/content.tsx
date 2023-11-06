@@ -14,9 +14,11 @@ const useStyles = makeStyles({
   },
 
   content: {
-    '& p': {
+    '& p, & section': {
       marginTop: '20px',
       marginBottom: '20px',
+      lineHeight: 1.625,
+      fontSize: tokens.fontSizeBase400,
     },
 
     '& h1': {
