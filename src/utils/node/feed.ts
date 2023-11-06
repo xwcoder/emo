@@ -33,7 +33,7 @@ const parseAtom = (xml: any): Omit<Feed, 'url'> => {
       title: gettrim(v, 'title[0]'),
       url: gettrim(v, 'link[0].$.href', ''),
       content: gettrim(v, 'content[0]_', ''),
-      pubTime: gettrim(v, 'published[0]'),
+      pubTime: gettrim(v, 'published[0]') || gettrim(v, 'updated[0]'),
     })),
   }
 }
