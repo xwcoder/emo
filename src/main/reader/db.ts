@@ -1,5 +1,5 @@
-import { exec } from '@/main/db'
-import { logger } from '@/utils/electron-main/logger'
+import { exec } from '@/services/db/electron-main/db'
+import { logger } from '@/services/logger/electron-main/logger'
 
 const sql = `
   CREATE TABLE IF NOT EXISTS feeds (

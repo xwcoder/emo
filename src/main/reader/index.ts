@@ -1,6 +1,6 @@
+import { router } from '@/router/reader/electron-main'
+import { startCrawler } from '@/services/reader/electron-main/crawler'
 import { init as initDB } from './db'
-import { router } from './router'
-import { startCrawler } from './crawler'
 
 export function createApp() {
   initDB()

@@ -1,5 +1,5 @@
 import { app } from 'electron'
-import { isDev } from '@/utils/electron-main/env'
+import { isDev } from '@/base/electron-main/env'
 
 if (isDev) {
   app.setName(`${app.getName()}-dev`)
