@@ -4,7 +4,7 @@ import { Article, Tab } from '@/types/reader'
 export const upsert = (articles: Article | Article[]) => new Promise<void>((resolve, reject) => {
   const items = Array.isArray(articles) ? articles : [articles]
 
-  const cols = ['title', 'url', 'content', 'pubTime', 'feedId'] as const
+  const cols = ['title', 'url', 'content', 'pubTime', 'author', 'feedId'] as const
   const keys = cols.map((k) => `$${k}`)
   const sets = cols.map((k, index) => `${k}=${keys[index]}`)
 

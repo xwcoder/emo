@@ -68,6 +68,7 @@ function Content() {
     content,
     feedId,
     pubTime,
+    author,
   } = activeArticle
   const feed = feeds.find((v) => v.id === feedId)!
 
@@ -102,6 +103,11 @@ function Content() {
           <div className="mr-7">
             {feed.title}
           </div>
+          {author !== feed.title && (
+            <div className="mr-7">
+              {author}
+            </div>
+          )}
           <div>
             {formatTime(pubTime!, 'MM/dd/yy hh:mm')}
           </div>

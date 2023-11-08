@@ -6,6 +6,7 @@ export type Article = {
   url: string
   content: string
   pubTime?: string
+  author?: string
   starred?: 0 | 1
   read?: 0 | 1
   feedId?: number

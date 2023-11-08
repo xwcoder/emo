@@ -18,6 +18,7 @@ const parseRss = (xml: any): Omit<Feed, 'url'> => {
       url: gettrim(v, 'link[0]'),
       content: gettrim(v, 'content:encoded[0]') || gettrim(v, 'description[0]'),
       pubTime: gettrim(v, 'pubDate[0]'),
+      author: gettrim(v, 'author[0]', '') || gettrim(v, 'dc:creator[0]', ''),
     })),
   }
 }
@@ -30,10 +31,11 @@ const parseAtom = (xml: any): Omit<Feed, 'url'> => {
     description: '',
     link: '',
     items: (feed.entry || []).map((v: any) => ({
-      title: gettrim(v, 'title[0]'),
+      title: gettrim(v, 'title[0]._') || gettrim(v, 'title[0]'),
       url: gettrim(v, 'link[0].$.href', ''),
-      content: gettrim(v, 'content[0]_', ''),
+      content: gettrim(v, 'content[0]._', ''),
       pubTime: gettrim(v, 'published[0]') || gettrim(v, 'updated[0]'),
+      author: gettrim(v, 'author[0].name[0]') || gettrim(v, 'author[0]', '') || '',
     })),
   }
 }
