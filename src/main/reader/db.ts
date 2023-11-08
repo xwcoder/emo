@@ -1,4 +1,4 @@
-import { exec } from '@/services/db/electron-main/db'
+import { exec, get } from '@/services/db/electron-main/db'
 import { logger } from '@/services/logger/electron-main/logger'
 
 const sql = `
@@ -26,9 +26,20 @@ const sql = `
   );
 `
 
+const alterSql = `
+  ALTER TABLE articles
+  ADD COLUMN author NVARCHAR(50);
+`
+
 export const init = async () => {
   try {
     await exec(sql)
+
+    const row = await get('select * from sqlite_schema where name = "articles" and sql like "%author%"')
+
+    if (!row) {
+      await exec(alterSql)
+    }
   } catch (e) {
     logger.error('[Reader] Create Reader table error:', e)
   }
