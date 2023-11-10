@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import { useEffect, useRef } from 'react'
-import { makeStyles, tokens } from '@fluentui/react-components'
+import { makeStyles, tokens, shorthands } from '@fluentui/react-components'
 import { observer } from 'mobx-react-lite'
 import { store } from '@/ui/store'
 import { format as formatTime } from '@/base/common/date'
@@ -19,6 +19,11 @@ const useStyles = makeStyles({
       marginBottom: '20px',
       lineHeight: 1.625,
       fontSize: tokens.fontSizeBase400,
+    },
+
+    '& pre': {
+      backgroundColor: tokens.colorNeutralBackground6,
+      ...shorthands.padding(tokens.spacingVerticalXL),
     },
 
     '& h1': {

@@ -1,8 +1,17 @@
 import { parseStringPromise } from 'xml2js'
 import get from 'lodash.get'
 import { Feed } from '@/types/reader'
+import { logger } from '@/services/logger/electron-main/logger'
 
-const trim = (s = '') => s.replaceAll('\n', '').trim()
+const trim = (s = '') => {
+  if (typeof s === 'string' || typeof s === 'number') {
+    return `${s}`.trim()
+  }
+
+  logger.warn(`[trim]: ${JSON.stringify(s)}`)
+
+  return ''
+}
 
 const gettrim = (...args: Parameters<typeof get>) => trim(get(...args))
 
@@ -18,7 +27,7 @@ const parseRss = (xml: any): Omit<Feed, 'url'> => {
       url: gettrim(v, 'link[0]'),
       content: gettrim(v, 'content:encoded[0]') || gettrim(v, 'description[0]'),
       pubTime: gettrim(v, 'pubDate[0]'),
-      author: gettrim(v, 'author[0]', '') || gettrim(v, 'dc:creator[0]', ''),
+      author: gettrim(v, 'author[0]', '') || gettrim(v, 'dc:creator[0]._', '') || gettrim(v, 'dc:creator[0]', ''),
     })),
   }
 }
