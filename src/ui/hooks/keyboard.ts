@@ -135,11 +135,6 @@ export const makeKeyboard = ({ app }: { app: Apps }) => {
     useEffect(() => {
       el.addEventListener('keydown', keydownHander)
       el.addEventListener('keyup', keyupHandler)
-
-      return () => {
-        el.removeEventListener('keydown', keydownHander)
-        el.removeEventListener('keyup', keyupHandler)
-      }
     }, [])
   }
 
