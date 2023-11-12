@@ -15,7 +15,9 @@
       "copy": {
         "title": "复制链接",
         "success": "已复制到剪贴板"
-      }
+      },
+      "fontIncrease": "更大",
+      "fontDecrease": "更小"
     },
 
     "form": {
