@@ -15,7 +15,9 @@
       "copy": {
         "title": "Copy url",
         "success": "Copied"
-      }
+      },
+      "fontIncrease": "Larger",
+      "fontDecrease": "Smaller"
     },
 
     "form": {

@@ -19,7 +19,6 @@ const useStyles = makeStyles({
       marginTop: '20px',
       marginBottom: '20px',
       lineHeight: 1.625,
-      fontSize: tokens.fontSizeBase400,
     },
 
     '& pre': {
@@ -61,9 +60,26 @@ const useStyles = makeStyles({
   },
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const fontSizes = [
+  'text-[12px]',
+  'text-[13px]',
+  'text-[14px]',
+  'text-[15px]',
+  'text-[16px]',
+  'text-[17px]',
+  'text-[18px]',
+  'text-[19px]',
+  'text-[20px]',
+  'text-[21px]',
+  'text-[22px]',
+  'text-[23px]',
+  'text-[24px]',
+]
+
 function Content() {
   const styles = useStyles()
-  const { activeArticle, feeds } = readerStore
+  const { activeArticle, feeds, fontSize } = readerStore
 
   if (!activeArticle) {
     return null
@@ -121,7 +137,7 @@ function Content() {
           </div>
         </div>
       </div>
-      <div className="px-5">
+      <div className={`px-5 text-[${fontSize}px]`}>
         <div
           ref={containerRef}
           className={styles.content}

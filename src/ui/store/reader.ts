@@ -3,8 +3,11 @@ import { Tab, Feed, Article } from '@/types/reader'
 import * as remote from '@/services/remote/browser/remote'
 import * as feedService from '@/services/reader/browser/feed'
 import * as articleService from '@/services/reader/browser/article'
+import * as settingService from '@/services/settings/browser/settings'
 
 import type { RootStore } from './index'
+
+const fontSizeKey = 'reader.fontSize'
 
 export class ReaderStore {
   rootStore: RootStore
@@ -27,6 +30,8 @@ export class ReaderStore {
 
   showKeyboardPanel = false
 
+  fontSize = 14
+
   constructor(rootStore: RootStore) {
     makeAutoObservable(this, {
       rootStore: false,
@@ -44,6 +49,11 @@ export class ReaderStore {
     runInAction(() => { this.feeds = feeds || [] })
 
     this.getArticles()
+
+    const fontSize = await settingService.get(fontSizeKey)
+    runInAction(() => {
+      this.fontSize = fontSize || 14
+    })
   }
 
   private initListeners() {
@@ -332,5 +342,15 @@ export class ReaderStore {
 
   toggleKeyboardPanel() {
     this.showKeyboardPanel = !this.showKeyboardPanel
+  }
+
+  increaseFont() {
+    this.fontSize = Math.min(this.fontSize + 1, 24)
+    settingService.set(fontSizeKey, this.fontSize)
+  }
+
+  decreaseFont() {
+    this.fontSize = Math.max(this.fontSize - 1, 12)
+    settingService.set(fontSizeKey, this.fontSize)
   }
 }

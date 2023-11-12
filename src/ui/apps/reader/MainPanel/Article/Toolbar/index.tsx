@@ -3,6 +3,8 @@ import { MarkReadButton, StarButton } from '@/ui/apps/reader/components/toolbar'
 import { store } from '@/ui/store'
 import BackToListButton from './back-button'
 import OpenExternalButton from './open-external-btn'
+import FontIncreaseButton from './font-increase-button'
+import FontDecreaseButton from './font-decrease-button'
 
 const { readerStore } = store
 
@@ -18,6 +20,8 @@ function Toolbar() {
         <MarkReadButton />
         <StarButton id={activeId!} />
         <OpenExternalButton url={activeArticle!.url} />
+        <FontDecreaseButton />
+        <FontIncreaseButton />
       </div>
     </div>
   )
