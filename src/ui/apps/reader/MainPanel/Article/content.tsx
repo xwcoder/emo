@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite'
 import { store } from '@/ui/store'
 import { format as formatTime } from '@/base/common/date'
 import { openExternal } from '@/base/browser/shell'
+import { getAnchor } from '@/base/browser/dom'
 
 const { readerStore } = store
 
@@ -81,14 +82,16 @@ function Content() {
 
   useEffect(() => {
     const el = containerRef.current
+
     const handler = (e: MouseEvent) => {
-      const { target } = e
-      if (!(target instanceof HTMLAnchorElement) || !target.href) {
+      const anchor = getAnchor(e.target as HTMLElement)
+
+      if (!(anchor instanceof HTMLAnchorElement) || !anchor.href) {
         return
       }
 
       e.preventDefault()
-      openExternal(target.href)
+      openExternal(anchor.href)
     }
 
     el?.addEventListener('click', handler)
