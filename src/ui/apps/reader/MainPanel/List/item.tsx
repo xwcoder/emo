@@ -4,6 +4,7 @@ import {
   mergeClasses,
   tokens,
   Checkbox,
+  Tooltip,
 } from '@fluentui/react-components'
 import type { CheckboxProps } from '@fluentui/react-components'
 import { observer } from 'mobx-react-lite'
@@ -99,13 +100,20 @@ function Item({ article }: Props) {
             className="h-auto w-auto"
           />
         </div>
-        <div
-          className="basis-[168px] max-w-[168px] pr-8 whitespace-nowrap overflow-hidden cursor-pointer"
-          role="button"
-          onClick={open}
+        <Tooltip
+          content={feed?.title!}
+          relationship="description"
+          positioning="below"
+          appearance="inverted"
         >
-          {feed?.title}
-        </div>
+          <div
+            className="basis-[168px] max-w-[168px] pr-8 whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer"
+            role="button"
+            onClick={open}
+          >
+            {feed?.title}
+          </div>
+        </Tooltip>
         <div className="flex-1 flex items-center overflow-hidden">
           <div
             className="mr-auto overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer"
