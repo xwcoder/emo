@@ -27,7 +27,10 @@ const parseRss = (xml: any): Omit<Feed, 'url'> => {
       url: gettrim(v, 'link[0]'),
       content: gettrim(v, 'content:encoded[0]') || gettrim(v, 'description[0]'),
       pubTime: gettrim(v, 'pubDate[0]'),
-      author: gettrim(v, 'author[0]', '') || gettrim(v, 'dc:creator[0]._', '') || gettrim(v, 'dc:creator[0]', ''),
+      author: gettrim(v, 'author[0].name[0]', '')
+        || gettrim(v, 'author[0]', '')
+        || gettrim(v, 'dc:creator[0]._', '')
+        || gettrim(v, 'dc:creator[0]', ''),
     })),
   }
 }
