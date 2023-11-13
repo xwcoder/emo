@@ -16,7 +16,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-      - name: Remove node_modules
+      - if startsWith(matrix.os, 'macos')
+        name: Remove node_modules
         run: rm -rf node_modules
       - name: Install dependens
         run: npm install
