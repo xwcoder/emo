@@ -67,7 +67,7 @@ export class Window {
     if (isDev) {
       this.window.loadURL('http://localhost:4000')
     } else {
-      this.window.loadFile('dist/renderer/index.html')
+      this.window.loadFile('dist/ui/index.html')
     }
   }
 
