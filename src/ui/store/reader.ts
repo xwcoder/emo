@@ -252,11 +252,16 @@ export class ReaderStore {
     articleService.markRead(articles.map((v) => v.id!), status)
   }
 
-  markRead(id: number | number []) {
+  private getSelectedIds() {
+    const articles = this.opened ? [this.activeArticle] : this.articles.filter((v) => v.selected)
+    return articles.map((v) => v.id!)
+  }
+
+  markRead(id: number | number [] = this.getSelectedIds()) {
     this.markReadStatus(id, 1)
   }
 
-  markUnread(id: number | number []) {
+  markUnread(id: number | number [] = this.getSelectedIds()) {
     this.markReadStatus(id, 0)
   }
 
