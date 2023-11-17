@@ -77,6 +77,16 @@ function KeyboardShortcutsPanel() {
       keys: ['v'],
       text: intl.get('reader.keyboard.keys.v'),
     },
+    {
+      keys: ['shift', 'i'],
+      connector: '+',
+      text: intl.get('reader.keyboard.keys.shifti'),
+    },
+    {
+      keys: ['shift', 'u'],
+      text: intl.get('reader.keyboard.keys.shiftu'),
+      connector: '+',
+    },
   ].map((item) => {
     const keys = item.keys.map((k, index, v) => (
       <span
@@ -87,15 +97,22 @@ function KeyboardShortcutsPanel() {
         >
           {k}
         </span>
-        {index !== v.length - 1 ? <span> then </span> : null}
+        {index !== v.length - 1 ? (
+          <span>
+            {' '}
+            {item.connector ?? 'then'}
+            {' '}
+          </span>
+        ) : null}
       </span>
     ))
+
     return (
       <div
         key={item.keys.join('')}
       >
         <span
-          className="inline-block w-14 text-right"
+          className="inline-block w-16 text-right"
         >
           {keys}
         </span>

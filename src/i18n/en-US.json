@@ -49,7 +49,9 @@
         "k": "Previous item",
         "o": "Open item",
         "u": "Close item",
-        "v": "Open item in browser"
+        "v": "Open item in browser",
+        "shifti": "Mark as read",
+        "shiftu": "Mark as unread"
       }
     }
   },

@@ -39,6 +39,8 @@ iregister(['v'], () => {
 iregister(['x'], () => readerStore.toggleSelected())
 iregister(['*', 'a'], () => readerStore.selectAll())
 iregister(['*', 'n'], () => readerStore.deselectAll())
+iregister(['shift', 'i'], () => readerStore.markRead())
+iregister(['shift', 'u'], () => readerStore.markUnread())
 
 iregister(['g', 's'], () => readerStore.changeTab('starred'))
 iregister(['g', 'a'], () => readerStore.changeTab('all'))
